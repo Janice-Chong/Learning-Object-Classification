@@ -7,7 +7,8 @@ st.write('What is VAK Learning Style?, general overview of people\'s styles usin
 
 show_pages([
     Page('main.py', 'Home'),
-    Page('pages/Questionaire.py', 'Questionaire'),
+    Page('pages/LearningObjects.py', 'Learning Objects'),
+    Page('pages/Questionaire.py', 'Which Learning Objects Suits Me Best?'),
     Page('pages/UserManual.py', 'User Manual'),
 ])
 

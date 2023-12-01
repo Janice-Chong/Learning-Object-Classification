@@ -4,7 +4,8 @@ import joblib
 
 # Function to create a questionnaire page
 def questionnaire():
-    st.title("Questionnaire")
+    st.title("Which Learning Objects Suits Me Best?")
+    st.write("Please answer the following questions.")
 
     demographics_questions = {
         'Gender': ["Male", "Female"],
@@ -77,9 +78,16 @@ def questionnaire():
     # Multiple selection question
     response = st.multiselect("Preferred learning mode", ["Face to Face", "Synchronous Online Learning (Real Time)",
                                                           "Asynchronous Online Learning (On your own time)"])
-    st.text('Select all options that apply. You can select more than 1 option')
-    response = ', '.join(response)
-    responses['Preferred learning mode'] = response
+#     st.text('Select all options that apply. You can select more than 1 option')
+#     responses['Preferred learning mode'] = response
+
+    # Check if there's a response
+    if not response:
+        st.error("Please select at least one option for Preferred Learning Mode.")
+    else:
+        # Join the selected options if there's a response
+        response_text = ', '.join(response)
+        responses['Preferred learning mode'] = response_text
     
     st.subheader('Part 2: VAK Learning Style Test')
     # Collect user responses for each VAK question
@@ -97,8 +105,9 @@ def questionnaire():
         # Mark that the CSV file already exists
         st.session_state.csv_exists = True
         
-        st.write("Responses saved successfully!")
-        
+#         st.write("Responses saved successfully!")
+        st.success("Responses saved successfully!")
+
         # Append responses to the existing CSV file
 #         df_responses.to_csv("all_user_responses.csv", mode="a", header=not st.session_state.get('csv_exists'), index=False)
         
@@ -118,6 +127,7 @@ def questionnaire():
         df_responses = final_df(df_responses)
         
         # Model
+        st.subheader('Recommended Learning Objects')
         model_predict(df_responses)
         
         
@@ -377,7 +387,32 @@ def model_predict(df_responses):
     
     # Get column names where values are equal to 1
     selected_columns = predictions.columns[predictions.iloc[0] == 1].tolist()
-    st.write(selected_columns)
+#     st.write(selected_columns)
+
+    # Define your custom mapping
+    custom_mapping = {
+        'Learning Objects [Slide presentation]': 'Slide Presentation',
+        'Learning Objects [Book]': 'Book',
+        'Learning Objects [Lecture Note]': 'Lecture Notes',
+        'Learning Objects [Educational game]': 'Educational Game',
+        'Learning Objects [Video]': 'Video',
+        'Learning Objects [Audio-recorded lecture]': 'Audio-Recorded Lecture',
+        'Learning Objects [Animated instruction]': 'Animated Instruction',
+        'Learning Objects [Real object model]': 'Real Object Model',
+        'Learning Objects [Mind Map]': 'Mind Map',
+        'Learning Objects [Multimedia content]': 'Multimedia Content',
+        'Learning Objects [Interactive Tool]': 'Interactive Tool',
+        'Learning Objects [Technology-supported learning include computer-based training systems]': 'Technology-Supported Learning Include Computer-Based Training Systems',
+        'Learning Objects [Intelligent computer-aided instruction systems]': 'Intelligent Computer-Aided Instruction Systems'
+    }
+
+    # Perform mapping for selected column names
+    selected_columns_mapped = [custom_mapping.get(col, col) for col in selected_columns]
+    
+    # Display selected column names as a table using st.dataframe()
+    data = {'Learning Objects': selected_columns_mapped}
+    df_selected_columns = pd.DataFrame(data, index=range(1, len(selected_columns) + 1))
+    st.dataframe(df_selected_columns)
 #     return predictions
 
 
