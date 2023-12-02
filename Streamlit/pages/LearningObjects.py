@@ -3,12 +3,24 @@ import streamlit as st
 st.title('Learning Objects')
 st.text('What are learningobjects? Types of learning objects')
 
+def col_17px_text(text):
+    color = "blue"
+    font_size = "17px"
+    bold = False
+    italic = True
+    style = "font-size:{}; color:{}; font-weight:bold; font-style:italic;" if bold else "font-size:{}; color:{};"
+    return f"<span style='{style.format(font_size, color)}'>{text}</span>"
+
 st.header('What is Learning Object?')
 # st.write('According to Quinn and Hobbs, 2000, the IEEE’s Learning Technology Standards Committee defines ’learning objects’ as entities, whether digital or non-digital, that can be harnessed, reused, or referenced in the context of technology-supported learning.')
-st.markdown("According to Quinn and Hobbs, 2000, the IEEE’s Learning Technology Standards Committee defines ’learning objects’ as entities, whether <span style='color:blue'><span style='font-size:20px'>digital</span></span> or <span style='color:blue'><span style='font-size:20px'>non-digital</span></span>, that can be harnessed, reused, or <span style='color:blue'><span style='font-size:20px'>referenced</span></span> in the context of <span style='color:blue'><span style='font-size:20px'>technology-supported learning</span></span>.", unsafe_allow_html=True)
+# st.markdown("According to Quinn and Hobbs, 2000, the IEEE’s Learning Technology Standards Committee defines ’learning objects’ as entities, whether <span style='color:blue'><span style='font-size:20px'>digital</span></span> or <span style='color:blue'><span style='font-size:20px'>non-digital</span></span>, that can be harnessed, reused, or <span style='color:blue'><span style='font-size:20px'>referenced</span></span> in the context of <span style='color:blue'><span style='font-size:20px'>technology-supported learning</span></span>.", unsafe_allow_html=True)
 
-
-# st.write('However, there exist various types of learning objects which we can choose to use as our medium to learn. With the variety of options, there appears to be a problem or contemplation in choosing the right learning object.')
+lo_text = f"""
+<div style="text-align: justify;">
+    <p>According to Quinn and Hobbs, 2000, the IEEE’s Learning Technology Standards Committee defines ’learning objects’ as entities, whether {col_17px_text('digital')} or {col_17px_text('non-digital')}, that can be harnessed, reused, or {col_17px_text('referenced')} in the context of {col_17px_text('technology-supported learning')}. </p>
+</div>
+"""
+st.markdown(lo_text, unsafe_allow_html=True)
 
 st.write('Below are some types of learning objects.')
 

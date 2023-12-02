@@ -2,10 +2,11 @@ import streamlit as st
 import pandas as pd
 import joblib
 
+
 # Function to create a questionnaire page
 def questionnaire():
     st.title("Which Learning Objects Suits Me Best?")
-    st.write("Please answer the following questions.")
+    st.write("Please answer the following questions. There are 2 parts. Part 1 consist of 3 questions on your peronal details while Part 2 consist of 30 questions which will determines your learning style based on the VAK learning style.")
 
     demographics_questions = {
         'Gender': ["Male", "Female"],
@@ -65,6 +66,18 @@ def questionnaire():
         '30. When I\'m meeting with an old friend': ['I say \"it\'s great to see you!\"', 'I say "it\'s great to hear your voice!"', 
                                                      'I give them a hug or a handshake']
     }
+    # Function to check if any question is unanswered
+    def check_unanswered_questions():
+        unanswered_questions = []
+        for question in demographics_questions.keys():
+            if question not in responses.keys() or not responses[question]:
+                unanswered_questions.append(question)
+    
+        for question in vak_questions.keys():
+            if question not in responses.keys() or not responses[question]:
+                unanswered_questions.append(question)
+    
+        return unanswered_questions
 
     # User responses
     responses = {}
@@ -72,6 +85,7 @@ def questionnaire():
     st.subheader('Part 1: Personal Details')
     # Collect user responses
     for question, options in demographics_questions.items():
+#         response = st.radio(question, options, index=None) # No default selection
         response = st.radio(question, options)
         responses[question] = response
     
@@ -79,7 +93,6 @@ def questionnaire():
     response = st.multiselect("Preferred learning mode", ["Face to Face", "Synchronous Online Learning (Real Time)",
                                                           "Asynchronous Online Learning (On your own time)"])
 #     st.text('Select all options that apply. You can select more than 1 option')
-#     responses['Preferred learning mode'] = response
 
     # Check if there's a response
     if not response:
@@ -88,49 +101,54 @@ def questionnaire():
         # Join the selected options if there's a response
         response_text = ', '.join(response)
         responses['Preferred learning mode'] = response_text
-    
-    st.subheader('Part 2: VAK Learning Style Test')
-    # Collect user responses for each VAK question
-    for question, options in vak_questions.items():
-        response = st.radio(question, options)
-        responses[question] = response
+        
+        st.subheader('Part 2: VAK Learning Style Test')
+        
+        # Collect user responses for each VAK question
+        for question, options in vak_questions.items():
+#             response = st.radio(question, options, index=None) # No default selection
+            response = st.radio(question, options)
+            responses[question] = response
 
-    # Submit button to save responses
-    if st.button("Submit"):
-        # Save responses to a DataFrame
-        df_responses = pd.DataFrame([responses])
-   
-        # Save responses to a CSV file
-        df_responses.to_csv("user_responses.csv", index=False)
-        # Mark that the CSV file already exists
-        st.session_state.csv_exists = True
-        
-#         st.write("Responses saved successfully!")
-        st.success("Responses saved successfully!")
+        # Submit button to save responses
+        if st.button("Submit"):
+            # Check for unanswered questions
+            unanswered = check_unanswered_questions()
+            if unanswered:
+                st.warning("Please answer the following questions: " + ', '.join(unanswered))
+            else:
 
-        # Append responses to the existing CSV file
-#         df_responses.to_csv("all_user_responses.csv", mode="a", header=not st.session_state.get('csv_exists'), index=False)
-        
-        # Get the dominant VAK
-        df_responses = dom_vak(df_responses, vak_questions)
-        
-        # For checking purpose only --> can remove afterwards
-        df_responses.to_csv("user_responses_withdomVAK.csv", index=False)
-        # Mark that the CSV file already exists
-        st.session_state.csv_exists = True
-        show_user_responses()
-        
-        # Encode responses
-        df_responses = encode_res(df_responses, demographics_questions, vak_questions)
-        
-        # Merge the data to the format that suit the model
-        df_responses = final_df(df_responses)
-        
-        # Model
-        st.subheader('Recommended Learning Objects')
-        model_predict(df_responses)
-        
-        
+                # Save responses to a DataFrame
+                df_responses = pd.DataFrame([responses])
+
+                # Save responses to a CSV file
+                df_responses.to_csv("user_responses.csv", index=False)
+                # Mark that the CSV file already exists
+                st.session_state.csv_exists = True
+
+                st.success("Responses saved successfully!")
+
+            # Append responses to the existing CSV file
+            # df_responses.to_csv("all_user_responses.csv", mode="a", header=not st.session_state.get('csv_exists'), index=False)
+
+                # Get the dominant VAK
+                df_responses = dom_vak(df_responses, vak_questions)
+
+                # For checking purpose only --> can remove afterwards
+                df_responses.to_csv("user_responses_withdomVAK.csv", index=False)
+                # Mark that the CSV file already exists
+                st.session_state.csv_exists = True
+                show_user_responses()
+
+                # Encode responses
+                df_responses = encode_res(df_responses, demographics_questions, vak_questions)
+
+                # Merge the data to the format that suit the model
+                df_responses = final_df(df_responses)
+
+                # Model
+                st.subheader('Recommended Learning Objects')
+                model_predict(df_responses)
 
 #         # Append responses to an existing CSV file or create a new one
 #         if not st.session_state.get('df_all_responses'):
@@ -385,9 +403,31 @@ def model_predict(df_responses):
     svm_model = joblib.load("Model/svm_model_withQues.joblib")
     predictions = pd.DataFrame({col: classifier.predict(df_responses) for col, classifier in svm_model.items()})
     
-    # Get column names where values are equal to 1
-    selected_columns = predictions.columns[predictions.iloc[0] == 1].tolist()
-#     st.write(selected_columns)
+    predictions.to_csv("predictions.csv", index=False)
+    # Mark that the CSV file already exists
+    st.session_state.csv_exists = True
+#     # Get column names where values are equal to 1 (original code)
+#     selected_columns = predictions.columns[predictions.iloc[0] == 1].tolist()
+
+    # Due to exploding of 'Preferred learning mode' column, there may be >1 rows of predictions
+    # So, we will get all unique column names and put them into a df 
+    # Get all column names where the value is equal to 1 for all rows
+    selected_columns = predictions.apply(lambda row: predictions.columns[row == 1].tolist(), axis=1)
+
+    # Flatten the list of column names
+    all_selected_columns = [col for sublist in selected_columns for col in sublist]
+
+    # Convert the list into a DataFrame and then into a Series to remove duplicates
+    df_selected_columns = pd.DataFrame({'Selected_Columns': all_selected_columns})
+    unique_selected_columns = df_selected_columns['Selected_Columns'].drop_duplicates()
+
+    # Convert the unique values back to a DataFrame
+    df_unique_selected_columns = pd.DataFrame({'Selected_Columns': unique_selected_columns})
+
+    # Save the unique columns into a CSV file
+    df_unique_selected_columns.to_csv("selected_columns.csv", index=False)
+    # Mark that the CSV file already exists
+    st.session_state.csv_exists = True
 
     # Define your custom mapping
     custom_mapping = {
@@ -406,13 +446,22 @@ def model_predict(df_responses):
         'Learning Objects [Intelligent computer-aided instruction systems]': 'Intelligent Computer-Aided Instruction Systems'
     }
 
-    # Perform mapping for selected column names
-    selected_columns_mapped = [custom_mapping.get(col, col) for col in selected_columns]
+#     # Perform mapping for selected column names
+#     selected_columns_mapped = [custom_mapping.get(col, col) for col in selected_columns]
     
+#     # Display selected column names as a table using st.dataframe()
+#     data = {'Learning Objects': selected_columns_mapped}
+#     df_selected_columns = pd.DataFrame(data, index=range(1, len(selected_columns) + 1))
+#     st.dataframe(df_selected_columns)
+    
+    # Perform mapping for selected column names
+    selected_columns_mapped = [custom_mapping.get(col, col) for col in df_unique_selected_columns['Selected_Columns']]
+
     # Display selected column names as a table using st.dataframe()
     data = {'Learning Objects': selected_columns_mapped}
-    df_selected_columns = pd.DataFrame(data, index=range(1, len(selected_columns) + 1))
+    df_selected_columns = pd.DataFrame(data, index=range(1, len(selected_columns_mapped) + 1))
     st.dataframe(df_selected_columns)
+    
 #     return predictions
 
 
