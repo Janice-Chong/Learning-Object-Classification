@@ -44,6 +44,17 @@ vak = """
 - Doing (<u>**K**</u>inesthetic)
 """
 st.markdown(vak, unsafe_allow_html=True)
+
+left_co, cent_co,last_co = st.columns(3)
+with cent_co:
+    # Display an image
+    image = 'Pictures/VAK-learning-styles.jpg'  # Replace with your file path
+    try:
+        st.image(image, caption='Aspect of Learning', width=350)
+    except FileNotFoundError:
+        st.error("Image not found. Please check the file path.")
+    
+
             
 
 

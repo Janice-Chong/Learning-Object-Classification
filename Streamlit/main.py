@@ -67,60 +67,8 @@ methodology_text = f"""
 """
 st.markdown(methodology_text, unsafe_allow_html=True)
 
-
-
-
-
 st.markdown("", unsafe_allow_html=True)
 
-
-# one of the most prevalent and widely
-# embraced categorisations of diverse learning styles is
-# Fleming’s VARK model, sometimes abbreviated as VAK,
-# representing Visual (V), Auditory (A), and Kinaesthetic
-# (K) sensory modalities. This model provides learners
-# with a comprehensive insight into their learning styles,
-# drawing from the sensory modalities that engage in their
-# information absorption process. The paper also added
-# individuals often possess a favoured learning style, which
-# could encompass a mix of all three sensory modes. This
-# preference can vary from a strong inclination towards
-# a specific style to a balanced combination of two or
-# all three. Understanding one’s preferred learning style
-# empowers them to identify the most effective learning
-# approaches, enabling informed choices in their learning
-# strategies.
-# 1) Visual (V): Individuals who have a preference for
-# the visual aspect of learning excel when presented
-# 2
-# with pictorial information and descriptions, in-
-# cluding drawings, graphics, and images. For these
-# learners, the most suitable activities encompass
-# lectures, slide presentations, diagrams, graphics,
-# videos, and image-rich materials. Engaging in ex-
-# ercises, surveys, or any visual information content
-# is particularly effective for their learning style
-# (Dantas and Cunha, 2020).
-# 2) Auditory (A): Individuals who excel in absorbing
-# information through their sense of hearing. They
-# are more inclined to prefer recording lectures for
-# later review, rather than relying on visual aids
-# like PowerPoint presentations. Additionally, these
-# learners may read their notes aloud as part of their
-# study approach (Shahbodin et al., 2015).
-# 3) Kinaesthic (K): Individuals who learn best by
-# doing (Surjono, 2011). These learners enjoy the
-# hands-on experience or engage in complete phys-
-# ical immersion within the learning environment,
-# which may involve activities such as field trips,
-# dramatization, pantomime, or interviews (Maulidia
-# Tifani Alfin Nur Hardiana, 2018). Additionally,
-# individuals with this learning style encompass var-
-# ious forms of movement and emotions, both in
-# terms of experiencing and recollecting them. It in-
-# cludes aspects like physical motion, coordination,
-# rhythm, emotional reactions, and physical comfort
-# (Rita Syofyan, 2018).
 
 show_pages([
     Page('main.py', 'Home'),
