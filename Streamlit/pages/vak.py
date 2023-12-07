@@ -45,14 +45,14 @@ vak = """
 """
 st.markdown(vak, unsafe_allow_html=True)
 
-left_co, cent_co,last_co = st.columns(3)
-with cent_co:
-    # Display an image
-    image = 'Pictures/VAK-learning-styles.jpg'  # Replace with your file path
-    try:
-        st.image(image, caption='Aspect of Learning', width=350)
-    except FileNotFoundError:
-        st.error("Image not found. Please check the file path.")
+# left_co, cent_co,last_co = st.columns(3)
+# with cent_co:
+#     # Display an image
+#     image = 'Pictures/VAK-learning-styles.jpg'  # Replace with your file path
+#     try:
+#         st.image(image, caption='Aspect of Learning', width=350)
+#     except FileNotFoundError:
+#         st.error("Image not found. Please check the file path.")
     
 
             
@@ -60,3 +60,48 @@ with cent_co:
 
 st.header('Exploratory Data Analysis')
 st.markdown("", unsafe_allow_html=True)
+
+# left_co, cent_co,last_co = st.columns(3)
+# with cent_co:
+#     # Display an image
+#     image = 'Pictures/LevelStudy_Gender.png'  # Replace with your file path
+#     try:
+#         st.image(image, caption='Level of Study & Gender', width=500)
+#     except FileNotFoundError:
+#         st.error("Image not found. Please check the file path.")
+
+from PIL import Image
+LevelStudy_Gender = Image.open("Pictures/LevelStudy_Gender.png")
+st.image(LevelStudy_Gender, caption='Level of Study & Gender', use_column_width="always")
+
+VAK_Distributions = Image.open("Pictures/VAK_Distributions.png")
+st.image(VAK_Distributions, caption='VAK Distributions', use_column_width="always")
+
+Preferred_LearningMode = Image.open("Pictures/Preferred_LearningMode.png")
+st.image(Preferred_LearningMode, caption='Preferred Learning Mode Based On a Dominant VAK', use_column_width="always")
+
+Preferred_LO_Visual = Image.open("Pictures/Preferred_LO_Visual.png")
+st.image(Preferred_LO_Visual, caption='Preferred Learning Objects (Visual)', use_column_width="always")
+
+Preferred_LO_Auditory = Image.open("Pictures/Preferred_LO_Auditory.png")
+st.image(Preferred_LO_Auditory, caption='Preferred Learning Objects (Auditory)', use_column_width="always")
+
+Preferred_LO_Kinesthetic = Image.open("Pictures/Preferred_LO_Kinesthetic.png")
+st.image(Preferred_LO_Kinesthetic, caption='Preferred Learning Objects (Kinesthetic)', use_column_width="always")
+
+# Load the images
+# Preferred_LO_Visual = Image.open("Pictures/Preferred_LO_Visual.png")
+# Preferred_LO_Auditory = Image.open("Pictures/Preferred_LO_Auditory.png")
+# Preferred_LO_Kinesthetic = Image.open("Pictures/Preferred_LO_Kinesthetic.png")
+
+# Display images in a 3-column layout
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    st.image(Preferred_LO_Visual, caption='Preferred Learning Objects (Visual)', use_column_width="always")
+
+with col2:
+    st.image(Preferred_LO_Auditory, caption='Preferred Learning Objects (Auditory)', use_column_width="always")
+
+with col3:
+    st.image(Preferred_LO_Kinesthetic, caption='Preferred Learning Objects (Kinesthetic)', use_column_width="always")

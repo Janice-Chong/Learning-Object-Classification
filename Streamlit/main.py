@@ -74,6 +74,7 @@ show_pages([
     Page('main.py', 'Home'),
     Page('pages/vak.py', 'VAK Learning Style'),
     Page('pages/LearningObjects.py', 'Learning Objects'),
+#     Page('pages/eda.py', 'EDA'),
     Page('pages/Questionaire.py', 'Which Learning Objects Suits Me Best?'),
     Page('pages/UserManual.py', 'User Manual'),
 ])
