@@ -5,7 +5,7 @@ import joblib
 
 # Function to create a questionnaire page
 def questionnaire():
-    st.title("Which Learning Objects Suits Me Best?")
+    st.title("Which Learning Objects Suits Me Best?", anchor=False)
     st.write("Please answer the following questions. There are 2 parts. Part 1 consist of 3 questions on your peronal details while Part 2 consist of 30 questions which will determines your learning style based on the VAK learning style.")
 
     demographics_questions = {
@@ -82,11 +82,11 @@ def questionnaire():
     # User responses
     responses = {}
 
-    st.subheader('Part 1: Personal Details')
+    st.subheader('Part 1: Personal Details', anchor=False)
     # Collect user responses
     for question, options in demographics_questions.items():
-#         response = st.radio(question, options, index=None) # No default selection
-        response = st.radio(question, options)
+        response = st.radio(question, options, index=None) # No default selection
+#         response = st.radio(question, options)
         responses[question] = response
     
     # Multiple selection question
@@ -102,12 +102,12 @@ def questionnaire():
         response_text = ', '.join(response)
         responses['Preferred learning mode'] = response_text
         
-        st.subheader('Part 2: VAK Learning Style Test')
+        st.subheader('Part 2: VAK Learning Style Test', anchor=False)
         
         # Collect user responses for each VAK question
         for question, options in vak_questions.items():
-#             response = st.radio(question, options, index=None) # No default selection
-            response = st.radio(question, options)
+            response = st.radio(question, options, index=None) # No default selection
+#             response = st.radio(question, options)
             responses[question] = response
 
         # Submit button to save responses
@@ -134,11 +134,14 @@ def questionnaire():
                 # Get the dominant VAK
                 df_responses = dom_vak(df_responses, vak_questions)
 
-                # For checking purpose only --> can remove afterwards
-                df_responses.to_csv("user_responses_withdomVAK.csv", index=False)
-                # Mark that the CSV file already exists
-                st.session_state.csv_exists = True
-                show_user_responses()
+#                 # For checking purpose only --> can remove afterwards
+#                 df_responses.to_csv("user_responses_withdomVAK.csv", index=False)
+#                 # Mark that the CSV file already exists
+#                 st.session_state.csv_exists = True
+#                 show_user_responses()
+                
+                st.subheader('Dominant VAK Learning Style', anchor=False)
+                display_domVAK(df_responses)
 
                 # Encode responses
                 df_responses = encode_res(df_responses, demographics_questions, vak_questions)
@@ -147,7 +150,7 @@ def questionnaire():
                 df_responses = final_df(df_responses)
 
                 # Model
-                st.subheader('Recommended Learning Objects')
+                st.subheader('Recommended Learning Objects', anchor=False)
                 model_predict(df_responses)
 
 #         # Append responses to an existing CSV file or create a new one
@@ -165,7 +168,7 @@ def questionnaire():
 
 # Function to load user responses for checking purpose only --> remove after finalised
 def show_user_responses():
-    st.title("User Responses")
+    st.title("User Responses", anchor=False)
 
 #     # Load all user responses
 #     df_all_responses = st.session_state.get('df_all_responses')
@@ -328,6 +331,10 @@ def dom_vak(df_responses, vak_questions):
     
     return df_responses
     
+def display_domVAK(df_responses):
+    dom_vak_lst = df_responses['Dominant_VAK'].tolist()
+    for i in dom_vak_lst:
+        st.write(i)
     
 # Encoding responses    
 def encode_res(df_responses, demographics_questions, vak_questions):

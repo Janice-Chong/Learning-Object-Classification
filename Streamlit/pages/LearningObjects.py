@@ -4,9 +4,9 @@ st.title('Learning Objects')
 st.text('What are learningobjects? Types of learning objects')
 
 def col_17px_text(text):
-    color = "blue"
+    color = "#0091D5"
     font_size = "17px"
-    bold = False
+    bold = True
     italic = True
     style = "font-size:{}; color:{}; font-weight:bold; font-style:italic;" if bold else "font-size:{}; color:{};"
     return f"<span style='{style.format(font_size, color)}'>{text}</span>"

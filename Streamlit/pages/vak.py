@@ -1,7 +1,6 @@
 import streamlit as st
 
-st.title('Learning Style')
-st.text('What is VAK Learning Style?, general overview of people\'s styles using Tableau')
+st.title('Learning Style and Objects', anchor=False)
 
 
 # st.markdown("Learning Style is a way of classifying the different <span style='color:blue'>***ways people learn***</span> and <span style='color:blue'>***how they approach information***</span> (Sreenidhi and Tay, 2017)", unsafe_allow_html=True)
@@ -16,13 +15,15 @@ def italic_16px_text(text):
     return f"<span style='{style.format(font_size, color)}'>{text}</span>"
      
 def col_17px_text(text):
-    color = "blue"
+    color = "#0091D5"
     font_size = "17px"
-    bold = False
+    bold = True
     italic = True
     style = "font-size:{}; color:{}; font-weight:bold; font-style:italic;" if bold else "font-size:{}; color:{};"
     return f"<span style='{style.format(font_size, color)}'>{text}</span>"
 
+
+st.header('VAK Learning Style', anchor=False)
 ls_text = f"""
 <div style="text-align: justify;">
     <p>Learning Style is a way of classifying the different {col_17px_text('ways people learn')} and {col_17px_text('how they approach information')} (Sreenidhi and Tay, 2017). There are many types of learning style and this project focuses on the {italic_16px_text('VAK Learning Style')}.</p>
@@ -30,7 +31,6 @@ ls_text = f"""
 """
 st.markdown(ls_text, unsafe_allow_html=True)
 
-st.header('VAK Learning Style')
 vak_text = f"""
 <div style="text-align: justify;">
     <p>According to research by Sreenidhi and Tay, 2017, the Fleming’s VARK model, provides the learners with a {col_17px_text('profile of their learning styles')}. Learners are able to {col_17px_text('understand the type of learning that best suits them')}. People learn by:</p>
@@ -44,63 +44,59 @@ vak = """
 - Doing (<u>**K**</u>inesthetic)
 """
 st.markdown(vak, unsafe_allow_html=True)
-
-# left_co, cent_co,last_co = st.columns(3)
-# with cent_co:
-#     # Display an image
-#     image = 'Pictures/VAK-learning-styles.jpg'  # Replace with your file path
-#     try:
-#         st.image(image, caption='Aspect of Learning', width=350)
-#     except FileNotFoundError:
-#         st.error("Image not found. Please check the file path.")
     
 
             
 
+st.header('Learning Object', anchor=False)
 
-st.header('Exploratory Data Analysis (EDA)')
-intro_eda = f"""
+lo_text = f"""
 <div style="text-align: justify;">
-    <p>The data is collected via a {col_17px_text('survey')} using a Google form. It is distributed across students in Universiti Malaya. The collected dataset consists of data from years {col_17px_text('2021 to 2023')}. It consists of {col_17px_text('1035 rows')} and {col_17px_text('47 columns')} comprising of demographics (3), preferred learning mode (1), learning objects preferrences (13) and the VAK learning style questions (30).</p>
+    <p>According to Quinn and Hobbs, 2000, the IEEE’s Learning Technology Standards Committee defines ’learning objects’ as entities, whether {col_17px_text('digital')} or {col_17px_text('non-digital')}, that can be harnessed, reused, or {col_17px_text('referenced')} in the context of {col_17px_text('technology-supported learning')}. </p>
 </div>
-
-
 """
-st.markdown(intro_eda, unsafe_allow_html=True)
+st.markdown(lo_text, unsafe_allow_html=True)
 
-tableau_embeded = """
-<div class='tableauPlaceholder' id='viz1702043538136' style='position: relative'><noscript><a href='#'><img alt='Dataset Distribution Dashboard ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;DS&#47;DSPDashboards&#47;DatasetDistributionDashboard&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='DSPDashboards&#47;DatasetDistributionDashboard' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;DS&#47;DSPDashboards&#47;DatasetDistributionDashboard&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1702043538136');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else { vizElement.style.width='100%';vizElement.style.height='1127px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
-"""
-st.components.v1.html(tableau_embeded, height=550)
+st.write('Below are some types of learning objects.')
 
-tableau_embeded_lo = """
-<div class='tableauPlaceholder' id='viz1702043645760' style='position: relative'><noscript><a href='#'><img alt='Most Preferred Learning Objects Based on a Dominant VAK Dashboard ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;LO&#47;LODashboard&#47;MostPreferredLearningObjectsBasedonaDominantVAKDashboard&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='LODashboard&#47;MostPreferredLearningObjectsBasedonaDominantVAKDashboard' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;LO&#47;LODashboard&#47;MostPreferredLearningObjectsBasedonaDominantVAKDashboard&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1702043645760');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else { vizElement.style.width='100%';vizElement.style.height='727px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
-"""
-st.components.v1.html(tableau_embeded_lo, height=550)
+st.subheader('Animated Instruction', anchor=False)
+st.write('Visual instruction employing animation techniques, used to simplify complex concepts, processes, or explanations through engaging animated content.')
 
+st.subheader('Audio-Recorded Lecture', anchor=False)
+st.write('Recordings of lectures or talks in audio format, allowing learners to listen to educational content, speeches, or discussions related to a specific topic.')
 
-# tableau_embeded_lo = """
-# <div class='tableauPlaceholder' id='viz1702007856599' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Pr&#47;PreferredLearningObjectsBasedonaDominantVAK&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='PreferredLearningObjectsBasedonaDominantVAK&#47;Dashboard1' /><param name='tabs' value='yes' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Pr&#47;PreferredLearningObjectsBasedonaDominantVAK&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1702007856599');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.minWidth='1000px';vizElement.style.maxWidth='100%';vizElement.style.minHeight='850px';vizElement.style.maxHeight=(divElement.offsetWidth*0.75)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.minWidth='1000px';vizElement.style.maxWidth='100%';vizElement.style.minHeight='850px';vizElement.style.maxHeight=(divElement.offsetWidth*0.75)+'px';} else { vizElement.style.width='100%';vizElement.style.minHeight='750px';vizElement.style.maxHeight=(divElement.offsetWidth*1.77)+'px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
-# """
-# st.components.v1.html(tableau_embeded_lo, height=1000000)
+st.subheader('Book', anchor=False)
+st.write('Educational content presented in the form of a traditional book, providing in-depth information, theories, examples, and exercises related to a particular subject or topic.')
 
+st.subheader('Educational Game', anchor=False)
+st.write('Interactive activities designed for learning purposes, often incorporating challenges, puzzles, or simulations to educate and engage learners in a fun and interactive way.')
 
-# left_co, cent_co,last_co = st.columns(3)
-# with cent_co:
-#     # Display an image
-#     image = 'Pictures/LevelStudy_Gender.png'  # Replace with your file path
-#     try:
-#         st.image(image, caption='Level of Study & Gender', width=500)
-#     except FileNotFoundError:
-#         st.error("Image not found. Please check the file path.")
+st.subheader('Intelligent Computer-Aided Instruction Systems', anchor=False)
+st.write('Advanced systems employing artificial intelligence or adaptive learning techniques to personalize instruction, tailor content to individual learners, and track progress effectively.')
 
-# st.subheader('Level of Study and Gender')
-# LevelStudy = f"""
-# <div style="text-align: justify;">
-#     <p>Figure 1 shows the </p>
-# </div>
-# """
-# st.markdown(LevelStudy, unsafe_allow_html=True)
+st.subheader('Interactive Tool', anchor=False)
+st.write('Software applications, simulations, or online tools designed to actively engage learners by allowing them to manipulate content and interact with the learning materials.')
+
+st.subheader('Lecture Notes', anchor=False)
+st.write('Concise summaries or written materials derived from lectures, capturing key points, explanations, and essential information delivered during a lecture session.')
+
+st.subheader('Mind Map', anchor=False)
+st.write('Graphic organizers presenting information or concepts hierarchically, often using branching or radial diagrams to depict connections and relationships between ideas.')
+
+st.subheader('Multimedia Content', anchor=False)
+st.write('Educational materials integrating various media elements such as text, images, audio, and video to provide a comprehensive learning experience.')
+
+st.subheader('Real Object Model', anchor=False)
+st.write('Physical models or real-world objects used in education to illustrate concepts, structures, or systems in a tangible and interactive manner.')
+
+st.subheader('Slide Presentation', anchor=False)
+st.write('A visual presentation created using software like PowerPoint or Google Slides, typically consisting of slides containing information, images, and graphics to convey a message or lesson.')
+
+st.subheader('Technology-Supported Learning Include Computer-Based Training Systems', anchor=False)
+st.write('Learning systems or software utilizing technology, including computer-based programs or online platforms, to facilitate educational content delivery and assessment.')
+
+st.subheader('Video', anchor=False)
+st.write('Visual content that can include lectures, demonstrations, experiments, or educational content presented in a video format, allowing learners to visually grasp complex concepts.')
 
 # from PIL import Image
 # LevelStudy_Gender = Image.open("Pictures/LevelStudy_Gender.png")
