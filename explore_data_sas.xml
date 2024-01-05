@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?><_ROOT_ EMVERSION="15.2" ORIENTATION="HORIZONTAL">
+<Workspace>
+<NODES>
+<NODE CLASS="SASHELP.EMCORE.EXTENSION.CLASS" COMPONENT="FileImport" ID="FIMPORT" X="122" Y="148" DESCRIPTION="File Import" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="SAMPLE" TOOLPREFIX="FIMPORT">
+<PROPERTIES Location="CATALOG" Catalog="SASHELP.EMSAMP.Fimport.SOURCE" ImportType="Local" GuessRows="500" Delimiter="," NameRow="Y" SkipRows="0" MaxRows="1000000" MaxCols="10000" FileType="csv" Role="TRAIN" ForceRun="N" Summarize="N" AdvancedAdvisor="N" RunAction="Train" Component="FileImport" IFileName="C:\Users\Janice\Documents\Y3S1\DSP\Learning-Object-Classification\Dataset\responses_withVAKdom - SAS.csv" AccessTable="NoTableName" UserID="NoUserID" Password="NoPassword">
+<VariableProperties/>
+<EmVariableAttributes>
+<DELTA Variable="Are_you_aware_what_your_learning" AttributeName="ROLE" AttributeValue="REJECTED"/>
+<DELTA Variable="Are_you_familiar_with_the_term_l" AttributeName="ROLE" AttributeValue="REJECTED"/>
+<DELTA Variable="Country" AttributeName="ROLE" AttributeValue="REJECTED"/>
+<DELTA Variable="Difficulties_in_Online_Learning" AttributeName="ROLE" AttributeValue="REJECTED"/>
+<DELTA Variable="Do_you_think_knowing_your_own_le" AttributeName="ROLE" AttributeValue="REJECTED"/>
+<DELTA Variable="Email_Address" AttributeName="ROLE" AttributeValue="REJECTED"/>
+<DELTA Variable="I_understand_that_my_participat" AttributeName="ROLE" AttributeValue="REJECTED"/>
+<DELTA Variable="Institutions" AttributeName="ROLE" AttributeValue="REJECTED"/>
+<DELTA Variable="Learning_Objects__Animated_instr" AttributeName="ROLE" AttributeValue="TARGET"/>
+<DELTA Variable="Learning_Objects__Audio_recorded" AttributeName="ROLE" AttributeValue="TARGET"/>
+<DELTA Variable="Learning_Objects__Book_" AttributeName="ROLE" AttributeValue="TARGET"/>
+<DELTA Variable="Learning_Objects__Educational_ga" AttributeName="ROLE" AttributeValue="TARGET"/>
+<DELTA Variable="Learning_Objects__Intelligent_co" AttributeName="ROLE" AttributeValue="TARGET"/>
+<DELTA Variable="Learning_Objects__Interactive_To" AttributeName="ROLE" AttributeValue="TARGET"/>
+<DELTA Variable="Learning_Objects__Lecture_Note_" AttributeName="ROLE" AttributeValue="TARGET"/>
+<DELTA Variable="Learning_Objects__Mind_Map_" AttributeName="ROLE" AttributeValue="TARGET"/>
+<DELTA Variable="Learning_Objects__Multimedia_con" AttributeName="ROLE" AttributeValue="TARGET"/>
+<DELTA Variable="Learning_Objects__Real_object_mo" AttributeName="ROLE" AttributeValue="TARGET"/>
+<DELTA Variable="Learning_Objects__Slide_presenta" AttributeName="ROLE" AttributeValue="TARGET"/>
+<DELTA Variable="Learning_Objects__Technology_sup" AttributeName="ROLE" AttributeValue="TARGET"/>
+<DELTA Variable="Learning_Objects__Video_" AttributeName="ROLE" AttributeValue="TARGET"/>
+<DELTA Variable="Preferred_Communication_Platform" AttributeName="ROLE" AttributeValue="INPUT"/>
+<DELTA Variable="Preferred_learning_mode" AttributeName="ROLE" AttributeValue="INPUT"/>
+<DELTA Variable="Timestamp" AttributeName="ROLE" AttributeValue="REJECTED"/>
+</EmVariableAttributes>
+<EmTargetAttributes/>
+<EmFileProperties>
+<USERTRAINCODE Type="EXTERNAL" Extension="sas">
+<Data/>
+</USERTRAINCODE>
+<VARIABLESETDELTA Type="EXTERNAL" Extension="txt">
+<Data><![CDATA[
+if NAME=&quot;Are_you_aware_what_your_learning&quot; then do;
+ROLE=&quot;REJECTED&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+DROP=&quot;N&quot;;
+end;
+if NAME=&quot;Are_you_familiar_with_the_term_l&quot; then do;
+ROLE=&quot;REJECTED&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+DROP=&quot;N&quot;;
+end;
+if NAME=&quot;Country&quot; then do;
+ROLE=&quot;REJECTED&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+DROP=&quot;N&quot;;
+end;
+if NAME=&quot;Difficulties_in_Online_Learning&quot; then do;
+ROLE=&quot;REJECTED&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+DROP=&quot;N&quot;;
+end;
+if NAME=&quot;Do_you_think_knowing_your_own_le&quot; then do;
+ROLE=&quot;REJECTED&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+DROP=&quot;N&quot;;
+end;
+if NAME=&quot;Email_Address&quot; then do;
+ROLE=&quot;REJECTED&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+DROP=&quot;N&quot;;
+end;
+if NAME=&quot;I_understand_that_my_participat&quot; then do;
+ROLE=&quot;REJECTED&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+DROP=&quot;N&quot;;
+end;
+if NAME=&quot;Institutions&quot; then do;
+ROLE=&quot;REJECTED&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+DROP=&quot;N&quot;;
+end;
+if NAME=&quot;Learning_Objects__Animated_instr&quot; then do;
+ROLE=&quot;TARGET&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+DROP=&quot;N&quot;;
+end;
+if NAME=&quot;Learning_Objects__Audio_recorded&quot; then do;
+ROLE=&quot;TARGET&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+DROP=&quot;N&quot;;
+end;
+if NAME=&quot;Learning_Objects__Book_&quot; then do;
+ROLE=&quot;TARGET&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+DROP=&quot;N&quot;;
+end;
+if NAME=&quot;Learning_Objects__Educational_ga&quot; then do;
+ROLE=&quot;TARGET&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+DROP=&quot;N&quot;;
+end;
+if NAME=&quot;Learning_Objects__Intelligent_co&quot; then do;
+ROLE=&quot;TARGET&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+DROP=&quot;N&quot;;
+end;
+if NAME=&quot;Learning_Objects__Interactive_To&quot; then do;
+ROLE=&quot;TARGET&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+DROP=&quot;N&quot;;
+end;
+if NAME=&quot;Learning_Objects__Lecture_Note_&quot; then do;
+ROLE=&quot;TARGET&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+DROP=&quot;N&quot;;
+end;
+if NAME=&quot;Learning_Objects__Mind_Map_&quot; then do;
+ROLE=&quot;TARGET&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+DROP=&quot;N&quot;;
+end;
+if NAME=&quot;Learning_Objects__Multimedia_con&quot; then do;
+ROLE=&quot;TARGET&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+DROP=&quot;N&quot;;
+end;
+if NAME=&quot;Learning_Objects__Real_object_mo&quot; then do;
+ROLE=&quot;TARGET&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+DROP=&quot;N&quot;;
+end;
+if NAME=&quot;Learning_Objects__Slide_presenta&quot; then do;
+ROLE=&quot;TARGET&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+DROP=&quot;N&quot;;
+end;
+if NAME=&quot;Learning_Objects__Technology_sup&quot; then do;
+ROLE=&quot;TARGET&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+DROP=&quot;N&quot;;
+end;
+if NAME=&quot;Learning_Objects__Video_&quot; then do;
+ROLE=&quot;TARGET&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+DROP=&quot;N&quot;;
+end;
+if NAME=&quot;Preferred_Communication_Platform&quot; then do;
+ROLE=&quot;INPUT&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+DROP=&quot;N&quot;;
+end;
+if NAME=&quot;Preferred_learning_mode&quot; then do;
+ROLE=&quot;INPUT&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+DROP=&quot;N&quot;;
+end;
+if NAME=&quot;Timestamp&quot; then do;
+ROLE=&quot;REJECTED&quot;;
+LEVEL=&quot;INTERVAL&quot;;
+ORDER=&quot;&quot;;
+DROP=&quot;N&quot;;
+end;
+]]>
+</Data>
+</VARIABLESETDELTA>
+<DELTACODE Type="EXTERNAL" Extension="txt">
+<Data><![CDATA[
+if NAME=&quot;Are_you_aware_what_your_learning&quot; then do;
+ROLE=&quot;REJECTED&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+end;
+if NAME=&quot;Are_you_familiar_with_the_term_l&quot; then do;
+ROLE=&quot;REJECTED&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+end;
+if NAME=&quot;Country&quot; then do;
+ROLE=&quot;REJECTED&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+end;
+if NAME=&quot;Difficulties_in_Online_Learning&quot; then do;
+ROLE=&quot;REJECTED&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+end;
+if NAME=&quot;Do_you_think_knowing_your_own_le&quot; then do;
+ROLE=&quot;REJECTED&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+end;
+if NAME=&quot;Email_Address&quot; then do;
+ROLE=&quot;REJECTED&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+end;
+if NAME=&quot;I_understand_that_my_participat&quot; then do;
+ROLE=&quot;REJECTED&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+end;
+if NAME=&quot;Institutions&quot; then do;
+ROLE=&quot;REJECTED&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+end;
+if NAME=&quot;Learning_Objects__Animated_instr&quot; then do;
+ROLE=&quot;TARGET&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+end;
+if NAME=&quot;Learning_Objects__Audio_recorded&quot; then do;
+ROLE=&quot;TARGET&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+end;
+if NAME=&quot;Learning_Objects__Book_&quot; then do;
+ROLE=&quot;TARGET&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+end;
+if NAME=&quot;Learning_Objects__Educational_ga&quot; then do;
+ROLE=&quot;TARGET&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+end;
+if NAME=&quot;Learning_Objects__Intelligent_co&quot; then do;
+ROLE=&quot;TARGET&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+end;
+if NAME=&quot;Learning_Objects__Interactive_To&quot; then do;
+ROLE=&quot;TARGET&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+end;
+if NAME=&quot;Learning_Objects__Lecture_Note_&quot; then do;
+ROLE=&quot;TARGET&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+end;
+if NAME=&quot;Learning_Objects__Mind_Map_&quot; then do;
+ROLE=&quot;TARGET&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+end;
+if NAME=&quot;Learning_Objects__Multimedia_con&quot; then do;
+ROLE=&quot;TARGET&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+end;
+if NAME=&quot;Learning_Objects__Real_object_mo&quot; then do;
+ROLE=&quot;TARGET&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+end;
+if NAME=&quot;Learning_Objects__Slide_presenta&quot; then do;
+ROLE=&quot;TARGET&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+end;
+if NAME=&quot;Learning_Objects__Technology_sup&quot; then do;
+ROLE=&quot;TARGET&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+end;
+if NAME=&quot;Learning_Objects__Video_&quot; then do;
+ROLE=&quot;TARGET&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+end;
+if NAME=&quot;Preferred_Communication_Platform&quot; then do;
+ROLE=&quot;INPUT&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+end;
+if NAME=&quot;Preferred_learning_mode&quot; then do;
+ROLE=&quot;INPUT&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+end;
+if NAME=&quot;Timestamp&quot; then do;
+ROLE=&quot;REJECTED&quot;;
+LEVEL=&quot;INTERVAL&quot;;
+ORDER=&quot;&quot;;
+end;
+drop DROP;
+]]>
+</Data>
+</DELTACODE>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMEXPL.STATEXPLORE.CLASS" COMPONENT="StatExplore" ID="Stat" X="319" Y="150" DESCRIPTION="StatExplore" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="EXPLORE" TOOLPREFIX="Stat">
+<PROPERTIES BySegment="N" Correlation="Y" Spearman="N" Pearson="Y" ChiSquare="Y" ChiSquareInterval="N" ChiSquareIntervalNBins="5" MaximumVars="1000" HideVariable="Y" DropRejected="Y" UseValidate="N" UseTest="N" UseScore="N" NObs="100000" IntervalDistribution="Y" ClassDistribution="Y" LevelSummary="Y" ForceRun="N" RunAction="Train" Component="StatExplore">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<CROSSTAB Type="DATA">
+<Data/>
+<Metadata/>
+</CROSSTAB>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+</NODES>
+<CONNECTIONS>
+<CONNECTION FROM="FIMPORT" TO="Stat"/>
+</CONNECTIONS>
+<NOTES>
+<DATA><![CDATA[
+
+]]>
+</DATA>
+</NOTES>
+</Workspace>
+</_ROOT_>
