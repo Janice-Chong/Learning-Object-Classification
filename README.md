@@ -9,3 +9,4 @@ Before you begin looking into the codes, it is highly encouraged to go through t
 
 ### Link to the website
 Smart-Learn: https://smart-learn.streamlit.app/
+Smart-Learn Repository: https://github.com/Janice-Chong/Smart-Learn.git
