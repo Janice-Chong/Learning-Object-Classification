@@ -6,3 +6,6 @@ This project explores how people learn best by combining their learning object p
 
 ### Advice
 Before you begin looking into the codes, it is highly encouraged to go through the documentation first to have a deeper understanding of the project.
+
+### Link to the website
+Smart-Learn: https://smart-learn.streamlit.app/
